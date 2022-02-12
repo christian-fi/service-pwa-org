@@ -73,7 +73,7 @@ function itc_sort_bike(b,a){
   if (a['bike'] <= b['bike']) { comparison = 1;}  else { comparison=-1;   }
   return comparison;
 } 
-        this.currentItems=result; // sorting stop - result.sort(itc_sort_bike);
+        this.currentItems=result.sort(itc_sort_bike); //result; // sorting stop - result.sort(itc_sort_bike);
         //this.restProvider.console_itc( this.currentItems);
       });
   }
