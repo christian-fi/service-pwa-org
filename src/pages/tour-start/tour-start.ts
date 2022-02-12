@@ -226,7 +226,7 @@ let ri=0; // items array leer dann fehler, daher erstmal nur 13 ausgeben
              
             }
           } 
-          /* not used anymore
+          /* not used anymoree
           function itc_sort_miss(b,a){
             // return a['work_id'].localeCompare(b['work_id']);
             let comparison = 0;
