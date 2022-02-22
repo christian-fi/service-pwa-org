@@ -1,5 +1,6 @@
 //https://www.djamware.com/post/59924f9080aca768e4d2b12e/ionic-3-consuming-rest-api-using-new-angular-43-httpclient
 //
+declare var config_api, apiMerchant_id_conf, apiUrl_conf, apiVersion_conf;
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -14,24 +15,8 @@ import {App} from "ionic-angular";
 @Injectable() 
 export class RestProvider {
  
-  version_akt= "2-8";
-  shareeLive="https://shareetool.copri.eu";
-  apiVersion = "https://shareetool.copri.eu/sharee-version.php";
-    
-  //apiUrlTinkTest="https://tinkwwp.copri-bike.de/APIjsonserver?request="; 
-  apiUrlTinkTest="https://shareeapp-primary.copri-bike.de/APIjsonserver?request=";
-  apiUrlTinkLive="https://shareeapp-primary.copri.eu/APIjsonserver?request=";
-  apiMerchant_id_Test='34567890';
-  apiMerchant_id_Live='cleeJet3';
-  apiMerchant_id_Test_Neu='ceefei9Eix';
-  
-  //apiMerchant_id=this.apiMerchant_id_Test;
-  //apiMerchant_id=this.apiMerchant_id_Live;
-  apiMerchant_id=this.apiMerchant_id_Test_Neu;
-  
-  //apiURL=this.apiUrlTinkTest;
-  apiURL=this.apiUrlTinkLive;
-  //apiUrlOperator="https://shareeapp-fr01.copri-bike.de/APIjsonserver?request=";
+  apiMerchant_id=apiMerchant_id_conf;
+  apiURL=apiUrl_conf;
   
   // test cookie cf 6168_84f63290a653c479dfa032c72d0fe1fe_34567890
   // live cookie cf 6168_84f63290a653c479dfa032c72d0fe1fe_cleeJet3
@@ -386,11 +371,11 @@ getTinkStationService(id:string) {    return new Promise(resolve => {
 getShareeVersion() {
   return new Promise(resolve => {
     //this.loading.present();
-    this.http.get(this.apiVersion).subscribe(data => {        
+    this.http.get(apiVersion_conf).subscribe(data => {        
       //        this.http.get(this.url).subscribe(data => {
 //        resolve(data['Search']);
         resolve(data);
-        this.console_itc('neueste sharee version: '+data['version']);
+        this.console_itc('neueste sharee version: '+data['version']+' aktuell API: '+config_api); //+'-'+data['os']
       }, err => {        this.console_itc(err);      }
     //,
   //  ()=> {

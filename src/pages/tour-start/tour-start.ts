@@ -1,3 +1,5 @@
+declare var version_akt, shareeLive_conf, version_check_conf;
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, reorderArray } from 'ionic-angular';
 
@@ -272,15 +274,15 @@ let ri=0; // items array leer dann fehler, daher erstmal nur 13 ausgeben
       .then(data => {
         this.version = data['version']; //neuste Version
         
-        this.restProvider.console_itc('this.restProvider.version_akt='+this.restProvider.version_akt);
+        this.restProvider.console_itc('version_akt='+version_akt);
         this.restProvider.console_itc('this.version='+this.version);
         function wait_ms(ms) {
           return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        if (this.restProvider.version_akt != this.version) {
+        if (( version_akt != this.version ) && version_check_conf == "JA") {
           this.restProvider.UpdateAktVersion(this.version);
-          wait_ms(5000).then(() => { window.location.href = this.restProvider.shareeLive +'/sharee_'+this.version;  });
+          wait_ms(5000).then(() => { window.location.href = shareeLive_conf +'/sharee_'+this.version;  });
         }
       });
       
